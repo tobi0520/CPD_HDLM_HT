@@ -63,7 +63,7 @@ def CQRPCDCPP(X, y, beta, beta0, toler, maxit, tau, lamda):
 
 
 
-def DP_regression(X,y, gamma, lambda_, delta, tol=0.0001):
+def DP_regression(X,y, gamma, lambda_, delta, tau, tol=0.0001):
 
     n = len(y)
     p = X.shape[1]
@@ -76,7 +76,7 @@ def DP_regression(X,y, gamma, lambda_, delta, tol=0.0001):
     for i in range(1, n+1):
         bestvalue[i] = float('inf')
         for l in range(1, i+1):
-            b = bestvalue[l-1] + gamma*np.log(max(n,p)) + error_pred_seg_regression(X,y, l, i, lambda_, delta, tol)[0]
+            b = bestvalue[l-1] + gamma*np.log(max(n,p)) + cqr_loss(X, y, l, i, tau, lambda_, gamma)['residual']
             if b < bestvalue[i]:
                 bestvalue[i] = b
                 partition[i] = l-1
