@@ -3,7 +3,7 @@ Robust Change Point Detection for High-dimensional  Linear Models with Tolerance
 
 
 
-We provide the R codes and real data for the leading studies. 
+We provide the python codes and real data for the leading studies. 
 
 Several files are provided:
 
